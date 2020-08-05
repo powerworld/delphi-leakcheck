@@ -1,0 +1,41 @@
+package DelphiLeakCheck;
+
+{$R *.res}
+{$IFDEF IMPLICITBUILDING This IFDEF should not be used by users}
+{$ALIGN 8}
+{$ASSERTIONS ON}
+{$BOOLEVAL OFF}
+{$DEBUGINFO OFF}
+{$EXTENDEDSYNTAX ON}
+{$IMPORTEDDATA ON}
+{$IOCHECKS ON}
+{$LOCALSYMBOLS ON}
+{$LONGSTRINGS ON}
+{$OPENSTRINGS ON}
+{$OPTIMIZATION OFF}
+{$OVERFLOWCHECKS OFF}
+{$RANGECHECKS OFF}
+{$REFERENCEINFO ON}
+{$SAFEDIVIDE OFF}
+{$STACKFRAMES ON}
+{$TYPEDADDRESS OFF}
+{$VARSTRINGCHECKS ON}
+{$WRITEABLECONST OFF}
+{$MINENUMSIZE 1}
+{$IMAGEBASE $400000}
+{$DEFINE DEBUG}
+{$ENDIF IMPLICITBUILDING}
+{$IMPLICITBUILD ON}
+
+requires
+  rtl;
+
+contains
+  LeakCheck in 'Source\LeakCheck.pas',
+  LeakCheck.Collections in 'Source\LeakCheck.Collections.pas',
+  LeakCheck.Cycle in 'Source\LeakCheck.Cycle.pas',
+  LeakCheck.Utils in 'Source\LeakCheck.Utils.pas',
+  DUnitX.MemoryLeakMonitor.LeakCheck in 'External\DUnitX\DUnitX.MemoryLeakMonitor.LeakCheck.pas',
+  DUnitX.MemoryLeakMonitor.LeakCheckCycle in 'External\DUnitX\DUnitX.MemoryLeakMonitor.LeakCheckCycle.pas';
+
+end.

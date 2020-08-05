@@ -1,1 +1,6 @@
 __history/
+*dproj.local
+*identcache
+*res
+*stat
+*.dcu
