@@ -54,7 +54,10 @@
         <SanitizedProjectName>DelphiLeakCheck</SanitizedProjectName>
         <VerInfo_Locale>1033</VerInfo_Locale>
         <VerInfo_Keys>CompanyName=;FileDescription=$(MSBuildProjectName);FileVersion=1.0.0.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProgramID=com.embarcadero.$(MSBuildProjectName);ProductName=$(MSBuildProjectName);ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
-        <DCC_UnitSearchPath>.\Source;$(BDS)\source\DunitX;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
+        <PreBuildEvent><![CDATA[COPY "$(BDS)\source\DunitX\DUnitX.inc" ".\External\DUnitX"
+COPY "$(BDS)\source\DunitX\DUnitX.Stacktrace.inc" ".\External\DUnitX"
+COPY "$(BDS)\source\DunitX\DUnitX.MemoryLeaks.inc" ".\External\DUnitX"
+$(PreBuildEvent)]]></PreBuildEvent>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base_Win32)'!=''">
         <DCC_Namespace>Winapi;System.Win;Data.Win;Datasnap.Win;Web.Win;Soap.Win;Xml.Win;Bde;$(DCC_Namespace)</DCC_Namespace>
@@ -527,4 +530,36 @@
     <Import Project="$(BDS)\Bin\CodeGear.Delphi.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Delphi.Targets')"/>
     <Import Project="$(APPDATA)\Embarcadero\$(BDSAPPDATABASEDIR)\$(PRODUCTVERSION)\UserTools.proj" Condition="Exists('$(APPDATA)\Embarcadero\$(BDSAPPDATABASEDIR)\$(PRODUCTVERSION)\UserTools.proj')"/>
     <Import Project="$(MSBuildProjectName).deployproj" Condition="Exists('$(MSBuildProjectName).deployproj')"/>
+    <PropertyGroup Condition="'$(Config)'=='Debug' And '$(Platform)'=='Win32'">
+        <PreBuildEvent>COPY &quot;$(BDS)\source\DunitX\DUnitX.inc&quot; &quot;.\External\DUnitX&quot;&amp;&amp;COPY &quot;$(BDS)\source\DunitX\DUnitX.Stacktrace.inc&quot; &quot;.\External\DUnitX&quot;&amp;&amp;COPY &quot;$(BDS)\source\DunitX\DUnitX.MemoryLeaks.inc&quot; &quot;.\External\DUnitX&quot;</PreBuildEvent>
+        <PreBuildEventIgnoreExitCode>False</PreBuildEventIgnoreExitCode>
+        <PreLinkEvent/>
+        <PreLinkEventIgnoreExitCode>False</PreLinkEventIgnoreExitCode>
+        <PostBuildEvent/>
+        <PostBuildEventIgnoreExitCode>False</PostBuildEventIgnoreExitCode>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Config)'=='Debug' And '$(Platform)'=='Win64'">
+        <PreBuildEvent>COPY &quot;$(BDS)\source\DunitX\DUnitX.inc&quot; &quot;.\External\DUnitX&quot;&amp;&amp;COPY &quot;$(BDS)\source\DunitX\DUnitX.Stacktrace.inc&quot; &quot;.\External\DUnitX&quot;&amp;&amp;COPY &quot;$(BDS)\source\DunitX\DUnitX.MemoryLeaks.inc&quot; &quot;.\External\DUnitX&quot;</PreBuildEvent>
+        <PreBuildEventIgnoreExitCode>False</PreBuildEventIgnoreExitCode>
+        <PreLinkEvent/>
+        <PreLinkEventIgnoreExitCode>False</PreLinkEventIgnoreExitCode>
+        <PostBuildEvent/>
+        <PostBuildEventIgnoreExitCode>False</PostBuildEventIgnoreExitCode>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Config)'=='Release' And '$(Platform)'=='Win32'">
+        <PreBuildEvent>COPY &quot;$(BDS)\source\DunitX\DUnitX.inc&quot; &quot;.\External\DUnitX&quot;&amp;&amp;COPY &quot;$(BDS)\source\DunitX\DUnitX.Stacktrace.inc&quot; &quot;.\External\DUnitX&quot;&amp;&amp;COPY &quot;$(BDS)\source\DunitX\DUnitX.MemoryLeaks.inc&quot; &quot;.\External\DUnitX&quot;</PreBuildEvent>
+        <PreBuildEventIgnoreExitCode>False</PreBuildEventIgnoreExitCode>
+        <PreLinkEvent/>
+        <PreLinkEventIgnoreExitCode>False</PreLinkEventIgnoreExitCode>
+        <PostBuildEvent/>
+        <PostBuildEventIgnoreExitCode>False</PostBuildEventIgnoreExitCode>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Config)'=='Release' And '$(Platform)'=='Win64'">
+        <PreBuildEvent>COPY &quot;$(BDS)\source\DunitX\DUnitX.inc&quot; &quot;.\External\DUnitX&quot;&amp;&amp;COPY &quot;$(BDS)\source\DunitX\DUnitX.Stacktrace.inc&quot; &quot;.\External\DUnitX&quot;&amp;&amp;COPY &quot;$(BDS)\source\DunitX\DUnitX.MemoryLeaks.inc&quot; &quot;.\External\DUnitX&quot;</PreBuildEvent>
+        <PreBuildEventIgnoreExitCode>False</PreBuildEventIgnoreExitCode>
+        <PreLinkEvent/>
+        <PreLinkEventIgnoreExitCode>False</PreLinkEventIgnoreExitCode>
+        <PostBuildEvent/>
+        <PostBuildEventIgnoreExitCode>False</PostBuildEventIgnoreExitCode>
+    </PropertyGroup>
 </Project>
